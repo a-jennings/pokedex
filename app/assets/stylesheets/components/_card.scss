@@ -1,0 +1,22 @@
+.card {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 5rem;
+    &>* {
+        width: 100%;
+        font-size: 3rem;
+        color: white;
+    }
+    &__id {
+        flex: 0 0 20%;
+        text-align: center;
+    }
+    &__image {
+        &--photo {
+            height: 5rem;
+            width: 5rem;
+        }
+    }
+}

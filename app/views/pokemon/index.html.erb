@@ -1,7 +1,17 @@
-<% @pokemon.each do |pokemon| %>
-  <ul>
-    <li>
-      <%= pokemon.id %> - <%= pokemon.name %>
-    </li>
-  </ul>
-<% end %>
+<div class="container">
+  <% @pokemon.each do |pokemon| %>
+    <div class="card">
+      <div class="card__id">
+        <p class="card__id--number"><%= pokemon.entry_no %></p>
+      </div>
+      <div class="card__name">
+        <p class="card__name--name">
+          <%= pokemon.name %>
+        </p>
+      </div>
+      <div class="card__image">
+        <img src="https://www.serebii.net/pokedex-swsh/icon/<%= pokemon.entry_no %>.png" alt="#" class="card__image--photo">
+      </div>
+    </div>
+  <% end %>
+</div>
