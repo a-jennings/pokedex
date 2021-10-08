@@ -1,9 +1,9 @@
 body {
     background-image: linear-gradient(to right bottom, $color-background-light, $color-background-dark);
+    background-attachment: fixed;
 }
 
 .container {
-    border: 3px solid black;
     height: 100vh;
     width: 30vw;
     margin: 5rem auto;
