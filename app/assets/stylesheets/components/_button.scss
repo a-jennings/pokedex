@@ -1,3 +1,67 @@
 .btn {
-    padding: 0 1rem;
+    padding: 0.3rem 1rem;
+    min-width: 6.5rem;
+    text-transform: uppercase;
+    border-radius: 2rem;
+    border: 1px solid $color-black;
+    color: $color-white;
+    font-family: 'Nunito';
+    font-weight: 600;
+    text-shadow: 2px 2px 0.5rem $color-black;
+    &__type {
+        &--bug {
+            background-image: linear-gradient(to bottom right, $color-type-bug, darken($color-type-bug, 15%));
+        }
+        &--dark {
+            background-image: linear-gradient(to bottom right, $color-type-dark, darken($color-type-dark, 15%));
+        }
+        &--dragon {
+            background-image: linear-gradient(to bottom right, $color-type-dragon, darken($color-type-dragon, 15%));
+        }
+        &--electric {
+            background-image: linear-gradient(to bottom right, $color-type-electric, darken($color-type-electric, 15%));
+        }
+        &--fairy {
+            background-image: linear-gradient(to bottom right, $color-type-fairy, darken($color-type-fairy, 15%));
+        }
+        &--fighting {
+            background-image: linear-gradient(to bottom right, $color-type-fighting, darken($color-type-fighting, 15%));
+        }
+        &--fire {
+            background-image: linear-gradient(to bottom right, $color-type-fire, darken($color-type-fire, 15%));
+        }
+        &--flying {
+            background-image: linear-gradient(to bottom right, $color-type-flying, darken($color-type-flying, 15%));
+        }
+        &--ghost {
+            background-image: linear-gradient(to bottom right, $color-type-ghost, darken($color-type-ghost, 15%));
+        }
+        &--grass {
+            background-image: linear-gradient(to bottom right, $color-type-grass, darken($color-type-grass, 15%));
+        }
+        &--ground {
+            background-image: linear-gradient(to bottom right, $color-type-ground, darken($color-type-ground, 15%));
+        }
+        &--ice {
+            background-image: linear-gradient(to bottom right, $color-type-ice, darken($color-type-ice, 15%));
+        }
+        &--normal {
+            background-image: linear-gradient(to bottom right, $color-type-normal, darken($color-type-normal, 15%));
+        }
+        &--poison {
+            background-image: linear-gradient(to bottom right, $color-type-poison, darken($color-type-poison, 15%));
+        }
+        &--psychic {
+            background-image: linear-gradient(to bottom right, $color-type-psychic, darken($color-type-psychic, 15%));
+        }
+        &--rock {
+            background-image: linear-gradient(to bottom right, $color-type-rock, darken($color-type-rock, 15%));
+        }
+        &--steel {
+            background-image: linear-gradient(to bottom right, $color-type-steel, darken($color-type-steel, 15%));
+        }
+        &--water {
+            background-image: linear-gradient(to bottom right, $color-type-water, darken($color-type-water, 15%));
+        }
+    }
 }
