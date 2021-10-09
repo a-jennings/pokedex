@@ -1,5 +1,5 @@
 class PokemonController < ApplicationController
   def index
-    @pokemon = Pokemon.all
+    @pokemon = Pokemon.all.sort
   end
 end
