@@ -11,11 +11,12 @@
     height: auto;
     &>* {
         width: 100%;
-        font-size: 3rem;
+        ;
     }
     &__id {
         flex: 0 0 20%;
         text-align: center;
+        font-size: 3rem;
     }
     &__image {
         flex: 1;
@@ -26,6 +27,12 @@
         }
     }
     &__name {
+        font-size: 3rem;
         margin-left: 2rem;
+    }
+    &__types {
+        text-transform: capitalize;
+        text-align: right;
+        margin-right: 3rem;
     }
 }
