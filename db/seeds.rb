@@ -42,7 +42,7 @@ all_pokemon.each do |pokemon|
   types = pokemon_api_call(pokemon.id)
   pokemon.update(type_one: types[0],
                  type_two: types[1])
-  p "#{pokemon.name} information added!"
+  p "(#{pokemon.id}/#{all_pokemon.length}) - #{pokemon.name} information added!"
 end
 
 p "Seeded #{Pokemon.count} pokemon!"
