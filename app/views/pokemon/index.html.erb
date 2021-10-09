@@ -10,8 +10,10 @@
         </p>
       </div>
       <div class="card__types">
-        <p class="card__types--1"><%= pokemon.type_one %></p>
-        <p class="card__types--2"><%= pokemon.type_two %></p>
+        <button class="btn btn__type--<%= pokemon.type_one %>"><%= pokemon.type_one %></button>
+        <% if pokemon.type_two %>
+          <button class="btn btn__type--<%= pokemon.type_two %>"><%= pokemon.type_two %></button>
+        <% end %>
       </div>
       <div class="card__image">
         <img src="https://www.serebii.net/swordshield/pokemon/<%= pokemon.entry_no %>.png" alt="#" class="card__image--photo">
@@ -19,3 +21,5 @@
     </div>
   <% end %>
 </div>
+
+<%=  %>
