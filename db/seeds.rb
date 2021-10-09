@@ -20,11 +20,31 @@ def normalize_number(number)
   end
 end
 
-p 'Seeding database...'
-
-pokeapi_call.each do |pokemon|
-  pokemon_name = pokemon['pokemon_species']['name']
-  Pokemon.create(name: pokemon_name.capitalize, entry_no: normalize_number(pokemon['entry_number']))
+def pokemon_api_call(id)
+  pokemon_url = "https://pokeapi.co/api/v2/pokemon/#{id}"
+  pokemon_serialized = URI.open(pokemon_url).read
+  pokemon_entry = JSON.parse(pokemon_serialized)
+  # for now this only returns pokemon types. to be expanded
+  pokemon_entry['types'].map { |type| type['type']['name'] }
 end
 
-p "Seeded #{Pokemon.count} pokemon"
+p 'Seeding database...'
+sleep(1)
+pokeapi_call.each_with_index do |pokemon, index|
+  pokemon_name = pokemon['pokemon_species']['name']
+  Pokemon.create(name: pokemon_name.capitalize, entry_no: normalize_number(pokemon['entry_number']))
+  p "No. #{index+1} - #{pokemon_name.capitalize} added!"
+end
+sleep(1)
+p 'Adding specific pokemon information!'
+all_pokemon = Pokemon.all
+all_pokemon.each do |pokemon|
+  types = pokemon_api_call(pokemon.id)
+  pokemon.update(type_one: types[0],
+                 type_two: types[1])
+  p "#{pokemon.name} information added!"
+end
+
+p "Seeded #{Pokemon.count} pokemon!"
+sleep(1)
+p 'Action complete'
