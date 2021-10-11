@@ -1,6 +1,6 @@
 <div class="container">
   <% @pokemon.each do |pokemon| %>
-    <div class="card">
+    <div class="card" data-pokemon-id="<%= pokemon.id %>">
       <div class="card__id">
         <p class="card__id--number"><%= pokemon.entry_no %></p>
       </div>

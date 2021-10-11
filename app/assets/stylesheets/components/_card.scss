@@ -9,6 +9,7 @@
     justify-content: space-evenly;
     align-items: center;
     height: auto;
+    cursor: pointer;
     &>* {
         width: 100%;
         ;
@@ -38,5 +39,8 @@
         &>.btn:not(:last-child) {
             margin-bottom: 3px;
         }
+    }
+    &:hover {
+        background-color: darken(#eee, 10%);
     }
 }
