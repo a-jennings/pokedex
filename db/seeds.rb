@@ -42,7 +42,7 @@ p 'Seeding database...'
 sleep(1)
 pokeapi_call.each_with_index do |pokemon, index|
   pokemon_name = pokemon['pokemon_species']['name']
-  Pokemon.create(name: pokemon_name.capitalize, entry_no: normalize_number(pokemon['entry_number']))
+  Pokemon.create(name: pokemon_name, entry_no: normalize_number(pokemon['entry_number']))
   p "No. #{index+1} - #{pokemon_name.capitalize} added!"
 end
 sleep(1)
