@@ -1,23 +1,25 @@
-<div class="container">
+<div class="container-index">
   <% @pokemon.each do |pokemon| %>
-    <div class="card" data-pokemon-id="<%= pokemon.id %>">
-      <div class="card__id">
-        <p class="card__id--number"><%= pokemon.entry_no %></p>
+    <%= link_to pokemon_url(pokemon.id) do %>
+      <div class="card" data-pokemon-id="<%= pokemon.id %>">
+        <div class="card__id">
+          <p class="card__id--number"><%= pokemon.entry_no %></p>
+        </div>
+        <div class="card__name">
+          <p class="card__name--name">
+            <%= pokemon.name %>
+          </p>
+        </div>
+        <div class="card__types">
+          <button class="btn btn__type--<%= pokemon.type_one %>"><%= pokemon.type_one %></button>
+          <% if pokemon.type_two %>
+            <button class="btn btn__type--<%= pokemon.type_two %>"><%= pokemon.type_two %></button>
+          <% end %>
+        </div>
+        <div class="card__image">
+          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/<%= pokemon.id %>.png" alt="<%= pokemon.name %>-sprite" class="card__image--photo">
+        </div>
       </div>
-      <div class="card__name">
-        <p class="card__name--name">
-          <%= pokemon.name %>
-        </p>
-      </div>
-      <div class="card__types">
-        <button class="btn btn__type--<%= pokemon.type_one %>"><%= pokemon.type_one %></button>
-        <% if pokemon.type_two %>
-          <button class="btn btn__type--<%= pokemon.type_two %>"><%= pokemon.type_two %></button>
-        <% end %>
-      </div>
-      <div class="card__image">
-        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/<%= pokemon.id %>.png" alt="<%= pokemon.name %>-sprite" class="card__image--photo">
-      </div>
-    </div>
+    <% end %>
   <% end %>
 </div>
