@@ -1,0 +1,13 @@
+.container {
+    height: 100vh;
+    margin: 5rem auto;
+    &-index {
+        width: 30vw;
+    }
+    &-show {
+        background-color: white;
+        width: 75%;
+        box-shadow: 3rem 5rem 20rem rgba(0, 0, 0, 0.3);
+        border-radius: 1rem;
+    }
+}

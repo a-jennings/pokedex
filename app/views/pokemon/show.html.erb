@@ -1,1 +1,14 @@
-Show page for <%= @pokemon.name %>
+<div class="container container-show">
+  <header class="heading">
+    <h1 class="heading__name">
+      <%= @pokemon.name %>
+    </h1>
+    <h2 class="heading__id">
+      #<%= @pokemon.entry_no %>
+    </h2>
+    <%= link_to 'Back', pokemon_index_url , class:"heading__back" %>
+  </header>
+  <div class="pokemon-sprite">
+    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/<%= @pokemon.id %>.png" alt="<%= @pokemon.name %>-sprite" class="pokemon-sprite__image">
+  </div>
+</div>

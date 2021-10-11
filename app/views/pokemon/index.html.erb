@@ -1,4 +1,4 @@
-<div class="container-index">
+<div class="container container-index">
   <% @pokemon.each do |pokemon| %>
     <%= link_to pokemon_url(pokemon.id) do %>
       <div class="card" data-pokemon-id="<%= pokemon.id %>">
