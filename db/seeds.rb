@@ -23,9 +23,19 @@ end
 def pokemon_api_call(id)
   pokemon_url = "https://pokeapi.co/api/v2/pokemon/#{id}"
   pokemon_serialized = URI.open(pokemon_url).read
-  pokemon_entry = JSON.parse(pokemon_serialized)
-  # for now this only returns pokemon types. to be expanded
+  JSON.parse(pokemon_serialized)
+end
+
+def pokemon_get_types(pokemon_entry)
   pokemon_entry['types'].map { |type| type['type']['name'] }
+end
+
+def pokemon_get_base_stats(pokemon_entry)
+  base_stats = {}
+  pokemon_entry['stats'].each do |stat|
+    base_stats[stat['stat']['name']] = stat['base_stat']
+  end
+  base_stats
 end
 
 p 'Seeding database...'
@@ -39,12 +49,25 @@ sleep(1)
 p 'Adding specific pokemon information!'
 all_pokemon = Pokemon.all
 all_pokemon.each do |pokemon|
-  types = pokemon_api_call(pokemon.id)
+  pokemon_entry = pokemon_api_call(pokemon.id)
+  types = pokemon_get_types(pokemon_entry)
+  base_stats = pokemon_get_base_stats(pokemon_entry)
   pokemon.update(type_one: types[0],
-                 type_two: types[1])
+                 type_two: types[1],
+                 hp: base_stats['hp'],
+                 attack: base_stats['attack'],
+                 defense: base_stats['defense'],
+                 specialattack: base_stats['special-attack'],
+                 specialdefense: base_stats['special-defense'],
+                 speed: base_stats['speed'])
   p "(#{pokemon.id}/#{all_pokemon.length}) - #{pokemon.name} information added!"
 end
 
 p "Seeded #{Pokemon.count} pokemon!"
 sleep(1)
 p 'Action complete'
+
+
+
+
+# Get stats for each pokemon as well.
