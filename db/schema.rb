@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_11_111634) do
+ActiveRecord::Schema.define(version: 2021_10_12_125339) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,9 @@ ActiveRecord::Schema.define(version: 2021_10_11_111634) do
     t.integer "specialattack"
     t.integer "specialdefense"
     t.integer "speed"
+    t.text "description"
+    t.integer "height"
+    t.integer "weight"
   end
 
 end
