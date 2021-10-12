@@ -63,7 +63,7 @@ all_pokemon.each do |pokemon|
   pokemon_species_entry = pokemon_species_api_call(pokemon.id)
   types = pokemon_get_types(pokemon_entry)
   base_stats = pokemon_get_base_stats(pokemon_entry)
-  description = pokemon_get_description(pokemon_species_entry)
+  description = pokemon_get_description(pokemon_species_entry).tr("\n \f", ' ')
   height = pokemon_entry['height']
   weight = pokemon_entry['weight']
   pokemon.update(type_one: types[0],
