@@ -11,7 +11,15 @@
   <div class="pokemon-sprite">
     <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/<%= @pokemon.id %>.png" alt="<%= @pokemon.name %>-sprite" class="pokemon-sprite__image">
   </div>
-  <div class="description">
-    <%= @pokemon.description %>
+  <div class="details">
+    <div class="details__types">
+      <button class="btn btn__type--<%= @pokemon.type_one %>"><%= @pokemon.type_one %></button>
+      <% if @pokemon.type_two %>
+        <button class="btn btn__type--<%= @pokemon.type_two %>"><%= @pokemon.type_two %></button>
+      <% end %>
+    </div>
+    <div class="details__description">
+      <%= @pokemon.description %>
+    </div>
   </div>
 </div>

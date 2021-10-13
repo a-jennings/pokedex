@@ -1,29 +1,44 @@
-.heading {
-    position: relative;
-    &__name {
-        text-align: center;
-        font-size: 5rem;
-        padding-top: 1rem;
-    }
-    &__id {
-        font-size: 3rem;
-        position: absolute;
-        top: 2rem;
-        left: 2rem;
-    }
-    &__back {
-        font-size: 2rem;
-        position: absolute;
-        top: 2rem;
-        right: 2rem;
-    }
-}
-
-.pokemon-sprite {
-    display: flex;
-    justify-content: center;
-    &__image {
-        height: 47.5rem;
-        width: 47.5rem;
-    }
-}
+  .heading {
+      position: relative;
+      &__name {
+          text-align: center;
+          font-size: 5rem;
+          padding-top: 1rem;
+      }
+      &__id {
+          font-size: 3rem;
+          position: absolute;
+          top: 2rem;
+          left: 2rem;
+      }
+      &__back {
+          font-size: 2rem;
+          position: absolute;
+          top: 2rem;
+          right: 2rem;
+      }
+  }
+  
+  .pokemon-sprite {
+      display: flex;
+      justify-content: center;
+      &__image {
+          height: 47.5rem;
+          width: 47.5rem;
+      }
+  }
+  
+  .details {
+      &__types {
+          display: flex;
+          justify-content: center;
+          &>button:not(:last-child) {
+              margin-right: 1rem;
+          }
+      }
+      &__description {
+          margin-top: 1rem;
+          font-size: 2rem;
+          text-align: center;
+      }
+  }
