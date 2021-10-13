@@ -1,71 +1,20 @@
-require 'open-uri'
-require 'json'
+require_relative 'seed_helper'
 
-def pokeapi_call
-  national_pokedex_url = 'https://pokeapi.co/api/v2/pokedex/national'
-  pokedex_serialized = URI.open(national_pokedex_url).read
-  pokedex_entry = JSON.parse(pokedex_serialized)
-  pokedex_entry['pokemon_entries']
-end
-
-def normalize_number(number)
-  # force number to be 3 digits long. eg: 1 --> 001 || 94 --> 094.
-  # return number as a string for finding images
-  if number.to_s.length == 1
-    "00" + number.to_s
-  elsif number.to_s.length == 2
-    "0" + number.to_s
-  else
-    number.to_s
-  end
-end
-
-def pokemon_api_call(id)
-  pokemon_url = "https://pokeapi.co/api/v2/pokemon/#{id}"
-  pokemon_serialized = URI.open(pokemon_url).read
-  JSON.parse(pokemon_serialized)
-end
-
-def pokemon_species_api_call(id)
-  pokemon_url = "https://pokeapi.co/api/v2/pokemon-species/#{id}"
-  pokemon_serialized = URI.open(pokemon_url).read
-  JSON.parse(pokemon_serialized)
-end
-
-def pokemon_get_types(pokemon_entry)
-  pokemon_entry['types'].map { |type| type['type']['name'] }
-end
-
-def pokemon_get_base_stats(pokemon_entry)
-  base_stats = {}
-  pokemon_entry['stats'].each do |stat|
-    base_stats[stat['stat']['name']] = stat['base_stat']
-  end
-  base_stats
-end
-
-def pokemon_get_description(pokemon_species_entry)
-  pokemon_species_entry['flavor_text_entries'].first['flavor_text']
-end
-
-p 'Seeding database...'
-sleep(1)
-pokeapi_call.each_with_index do |pokemon, index|
+puts 'Seeding Pokemon into database...'
+national_dex = pokeapi_call('https://pokeapi.co/api/v2/pokedex/national')['pokemon_entries']
+national_dex.each do |pokemon|
   pokemon_name = pokemon['pokemon_species']['name']
-  Pokemon.create(name: pokemon_name, entry_no: normalize_number(pokemon['entry_number']))
-  p "No. #{index+1} - #{pokemon_name.capitalize} added!"
+  entry_no = normalize_number(pokemon['entry_number'])
+  Pokemon.create(name: pokemon_name, entry_no: entry_no)
+  puts "No. #{entry_no} - #{pokemon_name.capitalize} added!"
 end
-sleep(1)
-p 'Adding specific pokemon information!'
-all_pokemon = Pokemon.all
-all_pokemon.each do |pokemon|
-  pokemon_entry = pokemon_api_call(pokemon.id)
-  pokemon_species_entry = pokemon_species_api_call(pokemon.id)
+puts 'Adding specific pokemon information...'
+Pokemon.all.each do |pokemon|
+  pokemon_entry = pokeapi_call("https://pokeapi.co/api/v2/pokemon/#{pokemon.id}")
+  pokemon_species_entry = pokeapi_call("https://pokeapi.co/api/v2/pokemon-species/#{pokemon.id}")
   types = pokemon_get_types(pokemon_entry)
   base_stats = pokemon_get_base_stats(pokemon_entry)
   description = pokemon_get_description(pokemon_species_entry).tr("\n \f", ' ')
-  height = pokemon_entry['height']
-  weight = pokemon_entry['weight']
   pokemon.update(type_one: types[0],
                  type_two: types[1],
                  hp: base_stats['hp'],
@@ -75,11 +24,9 @@ all_pokemon.each do |pokemon|
                  specialdefense: base_stats['special-defense'],
                  speed: base_stats['speed'],
                  description: description,
-                 height: height,
-                 weight: weight)
-  p "(#{pokemon.id}/#{all_pokemon.length}) - #{pokemon.name.capitalize} information added!"
+                 height: pokemon_entry['height'],
+                 weight: pokemon_entry['weight'])
+  puts "(#{pokemon.id}/#{Pokemon.count}) - #{pokemon.name.capitalize} information added!"
 end
 
-p "Seeded #{Pokemon.count} pokemon!"
-sleep(1)
-p 'Action complete'
+puts "Seeded #{Pokemon.count} pokemon!"
