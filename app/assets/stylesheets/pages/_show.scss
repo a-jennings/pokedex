@@ -41,4 +41,49 @@
           font-size: 2rem;
           text-align: center;
       }
+      &__stats {
+          margin-top: 2rem;
+      }
+      &__stats>ul {
+          list-style: none;
+          display: flex;
+          justify-content: space-around;
+      }
+      &__statbox {
+          min-width: 10rem;
+          padding: 2rem 0;
+          text-align: center;
+          border-radius: 10px;
+          box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.3);
+          &--name {
+              font-size: 1.3rem;
+          }
+          &--value {
+              font-size: 3rem;
+          }
+          &--hp {
+              background-image: linear-gradient(to right bottom, $color-stat-hp, darken($color-stat-hp, 20%));
+          }
+          &--attack {
+              background-image: linear-gradient(to right bottom, $color-stat-attack, darken($color-stat-attack, 20%));
+          }
+          &--defense {
+              background-image: linear-gradient(to right bottom, $color-stat-defense, darken($color-stat-defense, 20%));
+          }
+          &--specialattack {
+              background-image: linear-gradient(to right bottom, $color-stat-specattack, darken($color-stat-specattack, 20%));
+          }
+          &--specialdefense {
+              background-image: linear-gradient(to right bottom, $color-stat-specdefense, darken($color-stat-specdefense, 20%));
+          }
+          &--speed {
+              background-image: linear-gradient(to right bottom, $color-stat-speed, darken($color-stat-speed, 20%));
+          }
+          &--height {
+              background-image: linear-gradient(to right bottom, $color-stat-height, darken($color-stat-height, 20%));
+          }
+          &--weight {
+              background-image: linear-gradient(to right bottom, $color-stat-weight, darken($color-stat-weight, 20%));
+          }
+      }
   }

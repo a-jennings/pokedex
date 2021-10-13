@@ -21,5 +21,41 @@
     <div class="details__description">
       <%= @pokemon.description %>
     </div>
+    <div class="details__stats">
+      <ul>
+        <li class="details__statbox details__statbox--hp">
+          <p class="details__statbox--name">HP</p>
+          <p class="details__statbox--value"><%= @pokemon.hp %></p>
+        </li>
+        <li class="details__statbox details__statbox--attack">
+          <p class="details__statbox--name">Attack</p>
+          <p class="details__statbox--value"><%= @pokemon.attack %></p>
+        </li>
+        <li class="details__statbox details__statbox--defense">
+          <p class="details__statbox--name">Defense</p>
+          <p class="details__statbox--value"><%= @pokemon.defense %></p>
+        </li>
+        <li class="details__statbox details__statbox--specialattack">
+          <p class="details__statbox--name">Spec. Attack</p>
+          <p class="details__statbox--value"><%= @pokemon.specialattack %></p>
+        </li>
+        <li class="details__statbox details__statbox--specialdefense">
+          <p class="details__statbox--name">Spec. Defense</p>
+          <p class="details__statbox--value"><%= @pokemon.specialdefense %></p>
+        </li>
+        <li class="details__statbox details__statbox--speed">
+          <p class="details__statbox--name">Speed</p>
+          <p class="details__statbox--value"><%= @pokemon.speed %></p>
+        </li>
+        <li class="details__statbox details__statbox--height">
+          <p class="details__statbox--name">Height (m)</p>
+          <p class="details__statbox--value"><%= @pokemon.height/10.0 %></p>
+        </li>
+        <li class="details__statbox details__statbox--weight">
+          <p class="details__statbox--name">Weight (kg)</p>
+          <p class="details__statbox--value"><%= @pokemon.weight/10.0 %></p>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
